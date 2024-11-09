@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My weather app</title>
+    <link href="index.css" rel="stylesheet" type="text/css"/>
+</head>
+<div class="container">
+<body>
+   <h1>Weather app</h1> 
+   <h2>
+    <input type=id="city" placeholder="Enter the city name">
+<button id="search-btn">Search</button>
+<div id="Weather-data"> </h2>
+</div>
+</body>
+</html> 
+<footer>"This project is coded by 
+    <a href="https://github.com/Mbali-code/Final-project-shecdesplus.git" target="_blank">Mbali Maduna</a>"
+   ,is launched on render<a href="" target="_blank"></a>"</footer>
+</div>
+<script>
+    const apiKey=https://api.shecodes.io/weather/v1/current?query={query}&key={key};//
+    const cityInput = document.getElementByid('city');
+    const search-btn = document.getElementByid('search-btn');
+    const weatherDataDiv = document.getElementByid('weather-data');
+
+    search-btn.addEventListener('click',fetchweather);
+    function fetchweather() {
+        const city = cityInput.value.trim();
+        if (city) {
+            const url = https://api.shecodes.io/weather/v1/current?query={query}&key={key}
+        fetch(url).then(response => response.json()).then(data=> dispalayweather(data())).catch(error =>console.error(error()));
+        }
+    }
+function dispalayweather(data) {
+    constweatherIcon= getWeatherIcon(data.weather[0].icon);
+    constweatherHTML =
+    '<div class="weather-info">
+        <h2>${data.name}, ${data.sys.country}</h2>
+        <i class="weather-icon ${weathericon}"></i>
+        <p>Temeperature: ${data.main.temp}°C</p>
+        <p>Feels like : ${data.data.main.feels_like}°C</p>
+        <p>Humidity: ${data.main.humidity}%</p>
+        <p>Wind Speed: ${data.main.speed} m/s</p>
+        <p>Weather: ${data.weather[0].description}</p>
+ </div>
+ ;
+ weatherDataDiv.innerHTML;
+}
+function getWeatherIcon(iconCode) {
+    switch (iconCode) {
+        case '01d':
+        case '01n':
+        return 'fas fa-sun';
+        case '02d':
+        case '02n'
+            return 'fa-cloud-sun';
+            case '03d':
+            case '03n':
+                return 'fas fa-cloud';
+            case '04d':
+            case '04n':
+               return 'fas cloud-meatball'
+            case '09d':
+            case '09n':
+                return'fas fa cloud-rain';
+                case '10d':
+                case '10n':
+                    return 'fas fa-cloud-showers-heavy';
+                case '11d':
+                case '11n':
+                    return 'fas fa-poo-storm';
+                    case '13d':
+                    case '13n':
+                        return 'fas fa-snowflake';
+                  default:
+                    return 'fas fa-cloud';
+    }
+}
+</script>
